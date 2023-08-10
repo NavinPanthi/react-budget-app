@@ -1,8 +1,23 @@
+import { useState, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 const AddExpense = () => {
+  const [name, setName] = useState(null);
+  const [cost, setCost] = useState(null);
+  const { dispatch } = useContext(AppContext);
+  let nextId = 6;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const expense = {
+      id: nextId++,
+      name: name,
+      cost: parseInt(cost),
+    };
+    dispatch({ type: "ADD_EXPENSE", payload: expense });
+  };
   return (
     <div className="mt-9 mb-9">
       <p className="text-xl font-semibold mb-5">Add Expense</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col mb-3">
           <label htmlFor="name" className="text-sm mb-1 font-medium">
             Name
@@ -13,6 +28,7 @@ const AddExpense = () => {
             id="name"
             className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 500 focus:ring-sky-500 focus:ring-1 text-sm"
             placeholder="Enter a expense title."
+            onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
         <div>
@@ -25,6 +41,7 @@ const AddExpense = () => {
             id="name"
             className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 500 focus:ring-sky-500 focus:ring-1 text-sm"
             placeholder="Enter the cost for the expense."
+            onChange={(e) => setCost(e.target.value)}
           ></input>
         </div>
         <div>

@@ -1,5 +1,7 @@
 import { TiDelete } from "react-icons/ti";
+
 const Expense = (props) => {
+  
   return (
     <li
       key={props.id}
