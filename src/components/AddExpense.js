@@ -4,7 +4,7 @@ const AddExpense = () => {
       <p className="text-xl font-semibold mb-5">Add Expense</p>
       <form>
         <div className="flex flex-col mb-3">
-          <label for="name" className="text-sm mb-1 font-medium">
+          <label htmlFor="name" className="text-sm mb-1 font-medium">
             Name
           </label>
           <input
@@ -16,7 +16,9 @@ const AddExpense = () => {
           ></input>
         </div>
         <div>
-          <label for="name" className="text-sm font-medium mb-1">Cost</label>
+          <label htmlFor="name" className="text-sm font-medium mb-1">
+            Cost
+          </label>
           <input
             required="required"
             type="text"
@@ -26,9 +28,10 @@ const AddExpense = () => {
           ></input>
         </div>
         <div>
-        <button class="px-4 py-2 mt-3 text-sm w-full font-semibold rounded-md bg-slate-600 text-white border border-slate-300  hover:bg-slate-700 hover:border-transparent focus:outline-none focus:ring-2 focus:border-sky-500 focus:ring-offset-1">Save</button>
+          <button className="px-4 py-2 mt-3 text-sm w-full font-semibold rounded-md bg-slate-600 text-white border border-slate-300  hover:bg-slate-700 hover:border-transparent focus:outline-none focus:ring-2 focus:border-sky-500 focus:ring-offset-1">
+            Save
+          </button>
         </div>
-
       </form>
     </div>
   );
