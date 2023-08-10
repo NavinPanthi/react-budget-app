@@ -9,7 +9,7 @@ const Expense = (props) => {
 
       <div className="flex pr-5 font-semibold flex-row justify-around">
         <div className="min-w-max  text-xs flex items-center justify-center px-3 text-white rounded-full bg-rose-500">Rs. {props.cost}</div>
-        <TiDelete className="ml-4" size="1.5em"></TiDelete>
+        <TiDelete className="ml-4 cursor-pointer" size="1.5em"></TiDelete>
       </div>
     </li>
   );
