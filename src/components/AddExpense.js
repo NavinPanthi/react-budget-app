@@ -3,17 +3,20 @@ import { AppContext } from "../context/AppContext";
 const AddExpense = () => {
   const [name, setName] = useState(null);
   const [cost, setCost] = useState(null);
-  const { dispatch } = useContext(AppContext);
-  let nextId = 6;
+  const { nextId, dispatch } = useContext(AppContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const expense = {
-      id: nextId++,
+      id: nextId,
       name: name,
       cost: parseInt(cost),
     };
     dispatch({ type: "ADD_EXPENSE", payload: expense });
+    dispatch({ type: "INCREMENT_NEXT_ID" });
+
   };
+
   return (
     <div className="mt-9 mb-9">
       <p className="text-xl font-semibold mb-5">Add Expense</p>

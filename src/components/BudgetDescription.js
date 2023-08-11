@@ -1,7 +1,14 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 const BudgetDescription = () => {
-  const {budget} = useContext(AppContext);
+  const { expenses, budget } = useContext(AppContext);
+  const totalExpenses = expenses.reduce((total, item) => {
+    return (total = total + item.cost);
+  }, 0);
+  const ok =
+    totalExpenses > budget
+      ? "bg-rose-200 border-rose-300 "
+      : "bg-green-200 border-green-300";
   return (
     <div>
       <p className="text-5xl mt-3  font-semibold "> My budget App</p>
@@ -12,11 +19,13 @@ const BudgetDescription = () => {
             Edit
           </button>
         </div>
-        <div className="text-center  px-5 bg-green-200 border border-green-300 h-12 rounded flex items-center  text-md font-semibold">
-          Remaining: Rs.56
+        <div
+          className={`text-center  px-5 border ${ok} h-12 rounded flex items-center  text-md font-semibold`}
+        >
+          Remaining: Rs.{budget - totalExpenses}
         </div>
         <div className="text-center px-5 bg-rose-200 border border-rose-300 h-12 rounded flex items-center  text-md font-semibold">
-          Spent: Rs. 400
+          Spent: Rs.{totalExpenses}
         </div>
       </div>
     </div>
