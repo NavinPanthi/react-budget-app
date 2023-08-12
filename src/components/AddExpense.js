@@ -14,7 +14,6 @@ const AddExpense = () => {
     };
     dispatch({ type: "ADD_EXPENSE", payload: expense });
     dispatch({ type: "INCREMENT_NEXT_ID" });
-
   };
 
   return (

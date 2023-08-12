@@ -18,7 +18,7 @@ const AppReducer = (state, action) => {
       // };
       return {
         ...state,
-        expenses: state.expenses.filter(
+        expenses: initialState.expenses.filter(
           (expense) => expense.id !== action.payload
         ),
       };
@@ -27,6 +27,22 @@ const AppReducer = (state, action) => {
         ...state,
         budget: action.payload,
       };
+    case "SEARCH_EXPENSE": {
+      return {
+        ...state,
+        expenses: initialState.expenses.filter((expense) => {
+          return expense.name
+            .toLowerCase()
+            .includes(action.payload.toLowerCase());
+        }),
+      };
+    }
+    //    const filteredNotes = notes.filter((note) => {
+    //   return (
+    //     note.text.toLowerCase().includes(searchText.toLowerCase()) ||
+    //     note.heading.toLowerCase().includes(searchText.toLowerCase())
+    //   );
+    // });
     default:
       return state;
   }
